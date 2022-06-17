@@ -59,7 +59,7 @@ def login_user():
 
     if check_password_hash(user.password, data.get('password')):
         token = jwt.encode(
-            {'public_id': user.public_id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=30)},
+            {'public_id': user.public_id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)},
             os.getenv('SECRET_KEY'), 'HS256')
         return jsonify({'token': token})
 
